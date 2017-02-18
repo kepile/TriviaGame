@@ -2,72 +2,93 @@ var timer = 0;
 var counter= 0;
 var gameOver = false;
 var correctAns;
-var correct;
-var wrong;
-var unanswered;
+var correct=0;
+var wrong=0;
+var unanswered=0;
 var message = "";
-var ques = 1;
+var ques = 0;
 var userPick;
 
-var trivia = {
-	quest1 : {
+var trivia = [
+	   {
 	    question: "What was the first 3D animated feature film",
 	    ans: ["Toy Story", "Aladdin", "Cinderella", "Tarzan"],
 	    response: [true, false, false, false],
-	     vid: ""},
-	quest2  : {
+	    answer: "The first 3D animated feature film was Toy Story",
+	     vid: "assets/images/toy.gif"},
+	   {
 	    question: "Which movie is a remake of The Absent Minded Professor?",
 	    ans: ["Tangled", "The Princess and The Frog", "Flubber", "The Nutty Professor"],
-	    response: [false, false, true, false]},
-    quest3  : {
+	    response: [false, false, true, false],
+	    answer: "Flubber was a remake of The Absent Minded Professor",
+	    vid: "assets/images/toy.gif"},
+       {
 	    question: "Who was the scrapped cartoon star that came before Mickey Mouse?",
 	    ans: ["Donald Duck", "Horace Horse", "Goofy", "Oswald The Rabbit"],
-	    response: [false, false, false, true]},
-	quest4  : {
+	    response: [false, false, false, true],
+	    answer: "Oswald the Rabbit was scrapped as the cartoon star before Mickey Mouse",
+	     vid: "assets/images/toy.gif"},
+	   {
 	    question: "Which Disney villain stars in The Little Mermaid?",
 	    ans: ["King Triton", "Ursula", "Captain Hook", "The Red Queen"],
-	    response: [false, true, false, false]},
-	quest5  : {
+	    response: [false, true, false, false],
+	    answer: "Ursula was the villain in The Little Mermaid",
+	     vid: "assets/images/toy.gif"},
+	   {
 	    question: "Which Pixar film takes place in Australia?",
 	    ans: ["Brave", "Cars", "Ratatouille", "Finding Nemo"],
-	    response: [false, false, false, true]},
-	quest6  : {
+	    answer: "Finding Nemo takes place in Australia",
+	    response: [false, false, false, true],
+	     vid: "assets/images/toy.gif"},
+	   {
 	    question: "Which Disney movie is a retelling of the story of Hamlet?",
 	    ans: ["The Lion King", "Beauty and The Beast", "Cinderella", "Frozen"],
-	    response: [true, false, false, false]},
-	quest7  : {
+	    response: [true, false, false, false],
+	    answer: "The Lion King is based on the story of Hamlet",
+	     vid: "assets/images/toy.gif"},
+	   {
 	    question: "Which Disney movie wasn't inspired by a ride at a Disney theme park?",
 	    ans: ["Pirates of The Carribbean", "Tomorrowland", "Cars", "Tower of Terror"],
-	    response: [false, false, true, false]},
-	quest8  : {
+	    response: [false, false, true, false],
+	    answer: "Cars is not inspired by a ride at Disney theme parks",
+	     vid: "assets/images/toy.gif"},
+	   {
 	    question: "Which Disney movie featured a mix of cartoons and live action actors?",
 	    ans: ["Space Jam", "The Country Bears", "Dumbo", "Mary Poppins"],
-	    response: [false, false, false, true]},
-	quest9  : {
+	    response: [false, false, false, true],
+	    answer: "Mary Poppins features a mix of cartoons and live action actors",
+	     vid: "assets/images/toy.gif"},
+	   {
 	    question: "Which Disney movie was later turned into a TV series?",
 	    ans: ["Toy Story", "Aladdin", "A Bug's Life", "Cars"],
-	    response: [ false, true, false, false]},
-	quest6  : {
+	    response: [ false, true, false, false],
+	    answer: "Aladdin was later turned into a TV series",
+	     vid: "assets/images/toy.gif"},
+	   {
 	    question: "Who sings the featured title song from Frozen",
 	    ans: ["Katy Perry", "Kristen Bell", "Idina Menzel", "Taylor Swift"],
-	    response: [false, false, true, false]},
+	    response: [false, false, true, false],
+		answer: "Idina Menzel sings the featured title song from Frozen",
+	     vid: "assets/images/toy.gif"}
+	    ];
 
-	 displayTrivia: function(){
+	 function displayTrivia(){
 		    var j=0
-		    var currentQues = "quest"+ques;
+		    // var currentQues = "quest"+ques;
 		    
-			$("#question").html(trivia[currentQues].question);
+			$("#question").html(trivia[ques].question);
 			$('.triviaBtn').each(function(){	
+				 $(this).removeData("ansr");
 				
-			    if (trivia[currentQues].response[j]) {
-			    	correctAns = trivia[currentQues].ans[j];
+			    if (trivia[ques].response[j]) {
+			    	correctAns = trivia[ques].ans[j];
 			    };
-			    $(this).html(trivia[currentQues].ans[j]);
-				$(this).attr("data-ansr", trivia[currentQues].response[j]);
+			    $(this).html(trivia[ques].ans[j]);
+				$(this).attr("data-ansr", trivia[ques].response[j]);
 				j++;
 		    });
-		}
-	};
+		};
+	
 
 
 
@@ -84,7 +105,7 @@ function createBttn(){
 
 function startNewQues(){
 	displayTime();
-	trivia.displayTrivia();
+	displayTrivia();
 	restartTimer();
 }
 
@@ -115,12 +136,17 @@ function runTimer(){
 
 
 function displayResults() {
-		$("#answers").empty();
+		$("#question").empty();
 	    $("#counter").remove();
-	    var tempDiv  = $("<div>").html("Total Correct Answers: " + correct);
+	    var tempDiv  = $("<div>").html("Total Correct Answers: " + correct).attr("class", "results resultsFirst");
 	    $("#answers").append(tempDiv);
-	    tempDiv  = $("<div>").html("Total Wrong Answers: " + wrong);
-	      $("#answers").append(tempDiv);
+	    tempDiv = $("<div>").html("Total Wrong Answers: " + wrong).attr("class", "results");
+	    $("#answers").append(tempDiv);
+	    tempDiv = $("<div>").html("Total Unanswered: " + unanswered	).attr("class", "results");
+	    $("#answers").append(tempDiv);
+	    begBtn.html("Restart");
+		$("#answers").append(begBtn); 
+
 }
 
 
@@ -130,25 +156,21 @@ function displayAnswer() {
 	clearInterval(counter);
     var resultDiv = $("#answers");
     $("#question").html(message);
-    var newVid = $("<video>");
-   // newVid.attr("src", "assets/images/07a3c47a49821d54761a61d704ae0769.mts-mp430-272.MP4");
-    newVid.attr("src", "https://www.youtube.com/embed/LJnlmJ4lqik" );
-    newVid.attr("class", "screen");
-    newVid.attr("type", "video/mp4")
-    $("#answers").append(newVid);
-    var vid = $(".screen")
-   // vid.play();
+    $("#question").append("  " + trivia[ques].answer);
+    var newImg = $("<img>").attr("src", trivia[ques].vid).attr("class", "screen");
+  
+    $("#answers").append(newImg);
     setTimeout(function(){
 	    $( ".screen" ).remove();
-
-	    if (ques === 10) {
-	    	displayResults();
-	    } else {
-	       $(".triviaBtn").show();
-	       ques++;
+		console.log("question # " +ques + " " + trivia.length);
+	    if (ques < trivia.length-1) {
+	    	$(".triviaBtn").show();
+	        ques++;
 	       startNewQues();
+	    } else {
+	       displayResults();
 		}
-   }, 1000*5);
+   }, 1000*3);
 
 
 }
@@ -156,7 +178,10 @@ function displayAnswer() {
 
 
 
+$("#question").html("Disney Trivia");
+$("#question").attr("class", "titl");
 var begBtn = $("<button>");
+
 begBtn.attr("class", "startBtn");
 begBtn.html("Start");
 $("#answers").append(begBtn); 
@@ -165,13 +190,15 @@ $("#answers").append(begBtn);
 
 $(".startBtn").on("click", function() {
 	$(".startBtn").detach();
+	$(".results").empty();
 	timer = 0;
 	counter= 0;
 	gameOver = false;
-	correctAns = 0;
+	correctAns = "";
+	correct = 0;
     wrong = 0;
     unanswered = 0;
-    ques = 1;
+    ques = 0;
 	createBttn();
 	startNewQues();
 	 $(".triviaBtn").on("click", function(){

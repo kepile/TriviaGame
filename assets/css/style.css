@@ -1,4 +1,26 @@
 
+body {
+	background-image: url("../images/castle.jpg");
+	height:100%;
+	width: 100%;
+	 background-size: cover;
+}
+
+
+
+#wrapper {
+	height:600px;
+	width: 600px;
+	margin: 100px;
+	background-color: black;
+}
+
+.titl {
+font-size: 80pc;
+font-color: lightblue;
+text-align: center;
+font-family: 'Great Vibes', cursive;
+}
 
 
 .triviaBtn {
@@ -18,22 +40,10 @@
 	display:block;
 	margin-left: 150px;
 	text-align: center;
-	margin-top: 250px;
+	margin-top: 50px;
 }
 
-body {
-	background-image: url("../images/castle.jpg");
-	height:100%;
-	width: 100%;
-	 background-size: cover;
-}
 
-#wrapper {
-	height:600px;
-	width: 600px;
-	margin: 100px;
-	background-color: black;
-}
 
 #question {
 	color:white;
@@ -49,5 +59,25 @@ body {
 	margin: 25px;
 	padding-top: 25px;
 	text-align: center;
+}
+
+.screen {
+	margin-top: 20px;
+	margin-left:55px;
+}
+
+
+.results {
+	color: white;
+    font-size: 30px;
+	margin-left: 150px;
+	text-align: left;
+	margin-top: 20px;
+
+
+}
+
+.resultsFirst {
+	margin-top: 100px;
 }
 
