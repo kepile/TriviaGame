@@ -1,3 +1,53 @@
-body {
-	background-color: red;
+
+
+
+.triviaBtn {
+	color: pink;
+	height: 50px;
+	width: 300px;
+	display:block;
+	margin-left: 150px;
+	text-align: center;
+	margin-top: 20px;
 }
+
+.startBtn {
+	color:yellow;
+	height: 50px;
+	width: 300px;
+	display:block;
+	margin-left: 150px;
+	text-align: center;
+	margin-top: 250px;
+}
+
+body {
+	background-image: url("../images/castle.jpg");
+	height:100%;
+	width: 100%;
+	 background-size: cover;
+}
+
+#wrapper {
+	height:600px;
+	width: 600px;
+	margin: 100px;
+	background-color: black;
+}
+
+#question {
+	color:white;
+	font-size: 25px;
+	font-family: 'Quicksand', sans-serif;
+	margin: 10px;
+	text-align: center;
+}
+
+#counter {
+	color: white;
+	font-size: 40px;
+	margin: 25px;
+	padding-top: 25px;
+	text-align: center;
+}
+
