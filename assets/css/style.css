@@ -63,7 +63,9 @@ font-family: 'Great Vibes', cursive;
 
 .screen {
 	margin-top: 20px;
-	margin-left:55px;
+	margin-left:100px;
+	width:400px;
+	max-height: 300px;
 }
 
 
