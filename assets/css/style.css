@@ -4,6 +4,8 @@ body {
 	height:100%;
 	width: 100%;
 	 background-size: cover;
+	 color:black;
+	 font-size: 24px;
 }
 
 
@@ -16,25 +18,24 @@ body {
 }
 
 .titl {
-font-size: 80pc;
-font-color: lightblue;
+font-size: 70px;
+color: lightblue;
 text-align: center;
 font-family: 'Great Vibes', cursive;
 }
 
 
 .triviaBtn {
-	color: pink;
 	height: 50px;
-	width: 300px;
+	width: 350px;
 	display:block;
 	margin-left: 150px;
 	text-align: center;
 	margin-top: 20px;
+	font-size: 30px;
 }
 
 .startBtn {
-	color:yellow;
 	height: 50px;
 	width: 300px;
 	display:block;
@@ -45,7 +46,7 @@ font-family: 'Great Vibes', cursive;
 
 
 
-#question {
+.ques {
 	color:white;
 	font-size: 25px;
 	font-family: 'Quicksand', sans-serif;
@@ -80,6 +81,12 @@ font-family: 'Great Vibes', cursive;
 }
 
 .resultsFirst {
-	margin-top: 100px;
+	color: white;
+    font-size: 30px;
+	margin-left: 120px;
+	margin-right: 120px;
+	text-align: center;
+	margin-top: 20px;
+	
 }
 
